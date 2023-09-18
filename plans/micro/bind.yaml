@@ -4,7 +4,7 @@ credential:
       serviceRef:
         name: {{ include "ubireport.fullnameOverride" . }}-svc
         jsonpath: '{ .spec.clusterIP }'
-{{- if (eq .Values.service.type "NodePort") }}
+{{- if (eq .Values.ubireport.service.type "NodePort") }}
   - name: NODE_PORT
     valueFrom:
       serviceRef:
