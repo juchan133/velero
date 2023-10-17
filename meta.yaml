@@ -1,11 +1,11 @@
-name: ubireport
+name: velero
 version: 0.1.1
-id: d460e81e-5146-11ee-be56-0242ac120002
-description: "UbiReport by Helm Broker."
-displayName: "UbiReport"
-tags: ubireport
+id: 25e18d08-6cc5-11ee-b962-0242ac120002
+description: "VeleroService by Helm Broker."
+displayName: "VeleroService"
+tags: velero
 providerDisplayName: infranics
-longDescription: "https://github.com/juchan133/ubireport.git"
+longDescription: "https://github.com/juchan133/velero.git"
 documentationURL: ""
 supportURL: ""
 imageURL: ""
