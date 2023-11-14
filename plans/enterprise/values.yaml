@@ -1,8 +1,46 @@
-ubireport:
+veleroApi:
   resources:
     requests:
       cpu: 0.5
-      memory: 1G
+      memory: 512Mi
     limits:
-      cpu: 2 
-      memory: 4Gi
+      cpu: 2
+      memory: 2Gi
+veleroApp:
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 512Mi
+    limits:
+      cpu: 2
+      memory: 2Gi
+minio:
+  # object storage resources
+  resources:
+    requests:
+      cpu: 0.05
+      memory: 1Gi
+    limits:
+      cpu: 1
+      memory: 2Gi #1Gi
+velero:
+  # velero resources
+  resources:
+    requests:
+      cpu: 500m
+      memory: 128Mi
+    limits:
+      cpu: 2
+      memory: 2Gi #512Mi
+  # velero nodeAgent resources
+  nodeAgent:
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 2
+        memory: 4Gi #1024Mi
+global:
+  persistence:
+    size: 200Gi

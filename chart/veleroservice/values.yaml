@@ -211,4 +211,60 @@ veleroApp:
 
 global:
   persistence:
-    size: 50Gi
+    size: 10Gi
+
+minio:
+  nameOverride: "" # 'app' labels
+  fullnameOverride: "velero-minio" 
+  image:
+    repository: minio/minio
+    tag: RELEASE.2021-02-14T04-01-33Z
+  mcImage:
+    repository: minio/mc
+    tag: RELEASE.2021-02-14T04-28-06Z
+  helmKubectlJqImage:
+    repository: bskim45/helm-kubectl-jq
+    tag: 3.1.0
+  # object storage resources
+  resources:
+    requests:
+      cpu: 0.05
+      memory: 1Gi
+    limits:
+      cpu: 0.1
+      memory: 2Gi #1Gi
+
+velero:
+  # object storage url (minio.fullnameOverride이 일치해야함)
+  # 기본 셋팅 네임스페이스는 default로 고정한다.
+  configuration:
+    backupStorageLocation:
+      config:
+        s3Url: http://velero-minio.default.svc.cluster.local:9000
+  # object storage account
+  credentials:
+    secretContents:
+      cloud: |
+        [default]
+        aws_access_key_id=admin
+        aws_secret_access_key=challenge77!!
+  # velero resources
+  resources:
+    requests:
+      cpu: 500m
+      memory: 128Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi #512Mi
+  # velero nodeAgent resources
+  nodeAgent:
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi #1024Mi
+  initContainers:
+    - name: velero-plugin-for-aws
+      image: velero/velero-plugin-for-aws:v1.7.0
