@@ -4,7 +4,7 @@ veleroApi:
       cpu: 0.5
       memory: 512Mi
     limits:
-      cpu: 2
+      cpu: 1
       memory: 2Gi
 veleroApp:
   resources:
@@ -22,25 +22,25 @@ minio:
       memory: 1Gi
     limits:
       cpu: 0.1
-      memory: 2Gi #1Gi
+      memory: 1Gi
 velero:
   # velero resources
   resources:
     requests:
-      cpu: 500m
+      cpu: 300m
       memory: 128Mi
     limits:
       cpu: 1000m
-      memory: 1Gi #512Mi
+      memory: 512Mi
   # velero nodeAgent resources
   nodeAgent:
     resources:
       requests:
-        cpu: 500m
+        cpu: 300m
         memory: 512Mi
       limits:
-        cpu: 1000m
-        memory: 2Gi #1024Mi
+        cpu: 500m
+        memory: 1024Mi
 global:
   persistence:
     size: 30Gi

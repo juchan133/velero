@@ -241,13 +241,6 @@ velero:
     backupStorageLocation:
       config:
         s3Url: http://velero-minio.default.svc.cluster.local:9000
-  # object storage account
-  credentials:
-    secretContents:
-      cloud: |
-        [default]
-        aws_access_key_id=admin
-        aws_secret_access_key=challenge77!!
   # velero resources
   resources:
     requests:
