@@ -33,7 +33,7 @@ velero:
       cpu: 1000m
       memory: 512Mi
   # velero nodeAgent resources
-  nodeAgent:
+  nodeAgent: # create three replica 
     resources:
       requests:
         cpu: 300m

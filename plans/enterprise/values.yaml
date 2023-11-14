@@ -33,14 +33,14 @@ velero:
       cpu: 2
       memory: 2Gi #512Mi
   # velero nodeAgent resources
-  nodeAgent:
+  nodeAgent: # create three replica 
     resources:
       requests:
         cpu: 500m
         memory: 512Mi
       limits:
-        cpu: 2
-        memory: 4Gi #1024Mi
+        cpu: 1
+        memory: 2Gi #1024Mi
 global:
   persistence:
     size: 200Gi

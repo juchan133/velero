@@ -258,6 +258,3 @@ velero:
       limits:
         cpu: 1000m
         memory: 2Gi #1024Mi
-  initContainers:
-    - name: velero-plugin-for-aws
-      image: velero/velero-plugin-for-aws:v1.7.0
