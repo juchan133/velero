@@ -1,0 +1,13 @@
+credential:
+  - name: HOST
+    valueFrom:
+      serviceRef:
+        name: {{ include "veleroApp.fullnameOverride" . }}-app
+        jsonpath: '{ .spec.clusterIP }'
+{{- if (eq .Values.veleroApp.service.type "NodePort") }}
+  - name: NODE_PORT
+    valueFrom:
+      serviceRef:
+        name: {{ include "veleroApp.fullnameOverride" . }}-app
+        jsonpath: '{ .spec.ports[?(@.name=="http")].nodePort }'
+{{- end }}
